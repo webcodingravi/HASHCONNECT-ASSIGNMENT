@@ -1,139 +1,141 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const workItems=[
     {
         id: 1,
         title: "Britannia Marie Gold HerSpark",
+        slug: "britannia-marie-gold-her-spark",
         category: "Brand Campaign",
-        subtitle: "Campaign Landing Page",
         image:
             "https://framerusercontent.com/images/EGHhb9N4decwR73FsKpDHcC9q4Y.jpg",
     },
     {
         id: 2,
         title: "Britannia Milk Bikis Smart Moves",
+        slug: "britannia-milk-bikis-smart-moves",
         category: "Digital Platform",
-        subtitle: "Gaming Microsite & AI",
         image:
             "https://framerusercontent.com/images/k8QHaKXgDp8dGiDMH73NFBIU4.jpg",
     },
     {
         id: 3,
         title: "Her Store Marketplace",
+        slug: "her-store-marketplace",
         category: "E-Commerce Platform",
-        subtitle: "E-commerce & Community",
         image:
-            "https://framerusercontent.com/images/RYeLmGHaqOE8u02TKU7JGMMeY14.webp",
+            "https://framerusercontent.com/images/HkdjSA3orbIo3TIYZyeKgw8fw.webp",
     },
     {
         id: 4,
         title: "Store Discovery Enhancement",
+        slug: "store-discovery-enhancement",
         category: "UX/UI Design",
-        subtitle: "Digital for Retail",
         image:
-            "https://framerusercontent.com/images/3Ce1hv1w7IE2x8SA6T3kg8f2bY.jpg",
+            "https://framerusercontent.com/images/esXyAbVlgbSB7Ow18EgPpWp4OS4.webp",
     },
     {
         id: 5,
-        title: "Price Match Program",
-        category: "Pricing Engine",
-        subtitle: "Online Meets Offline",
-        image:
-            "https://framerusercontent.com/images/Yba5ijMwHrRVJIi5M7DENmB87h0.webp",
-    },
-    {
-        id: 6,
-        title: "Her Startup Contest",
-        category: "Event Platform",
-        subtitle: "Online Contest",
-        image:
-            "https://framerusercontent.com/images/GVQEn3TKPAdhWiDtclq1ZYnvM.webp",
-    },
-    {
-        id: 7,
-        title: "Purchase Incentive Management",
-        category: "Analytics Dashboard",
-        subtitle: "Redemption & Fulfillment",
-        image:
-            "https://framerusercontent.com/images/x03RX7MKlZweI0HLY0BbE45zw.webp",
-    },
-    {
-        id: 8,
         title: "Upskilling Retailers",
+        slug: "upskilling-retailers",
         category: "Learning Platform",
-        subtitle: "Digital Academy",
         image:
             "https://framerusercontent.com/images/PK27Fe7zjLgz4dTefgVTDUXlnBo.webp",
     },
     {
-        id: 9,
+        id: 6,
         title: "Achivr Social Commerce",
+        slug: "achivr-social-commerce",
         category: "Social Platform",
-        subtitle: "Sports-Tech & Commerce",
         image:
             "https://framerusercontent.com/images/zGxQ5sGK0Heyoa4lEOh5EFZb70.webp",
     },
 ];
 
-export default function Work() {
+const container={
+    hidden: { opacity: 0 },
+    show: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.12,
+        },
+    },
+};
+
+const item={
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0 },
+};
+
+const Work=() => {
     return (
-        <div className="min-h-screen bg-[#f2f2f2] px-6 py-20">
-            <div className="max-w-7xl mx-auto">
+        <div className="bg-[#f2f2f2] min-h-screen px-6 py-24">
+            {/* Heading */}
+            <div className="max-w-7xl mx-auto mb-16">
+                <h1 className="text-5xl md:text-6xl font-bold text-black">
+                    Work
+                </h1>
+                <p className="text-gray-600 mt-4 max-w-xl">
+                    Selected projects showcasing digital experiences.
+                </p>
+            </div>
 
-                {/* GRID */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-                    {workItems.map((item, index) => (
-                        <motion.a
-                            key={item.id}
-                            href="#"
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: index*0.05 }}
-                            className="group relative overflow-hidden rounded-md h-[420px] md:h-[520px] cursor-pointer"
-                        >
-                            {/* IMAGE */}
-                            <motion.img
+            {/* Grid */}
+            <motion.div
+                variants={container}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto"
+            >
+                {workItems.map((item) => (
+                    <motion.div
+                        key={item.id}
+                        variants={item}
+                        className="relative group overflow-hidden rounded-xl cursor-pointer"
+                    >
+                        {/* Image */}
+                        <div className="h-[420px] w-full overflow-hidden">
+                            <img
                                 src={item.image}
                                 alt={item.title}
-                                className="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition duration-700"
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             />
+                        </div>
 
-                            {/* DARK OVERLAY */}
-                            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition" />
+                        {/* Dark overlay */}
+                        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-500" />
 
-                            {/* TEXT CONTENT */}
-                            <div className="absolute inset-0 p-6 flex flex-col justify-between text-white">
-                                <div>
-                                    <p className="text-xs tracking-widest uppercase opacity-70">
-                                        {item.category}
-                                    </p>
-                                </div>
+                        {/* Text */}
+                        <div className="absolute bottom-0 p-6 text-white">
+                            <p className="text-xs uppercase tracking-widest opacity-70">
+                                {item.category}
+                            </p>
+                            <h2 className="text-xl md:text-2xl font-semibold mt-2 leading-snug">
+                                {item.title}
+                            </h2>
+                        </div>
 
-                                <div>
-                                    <h2 className="text-2xl md:text-3xl font-semibold leading-tight">
-                                        {item.title}
-                                    </h2>
-                                    <p className="text-sm mt-2 opacity-80 uppercase">
-                                        {item.subtitle}
-                                    </p>
-                                </div>
-                            </div>
+                        {/* Hover CTA */}
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
 
-                            {/* HOVER CTA */}
-                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                                <p className="text-white font-medium tracking-wide">
+                            <p >
+                                <Link
+                                    key={item.slug}
+                                    to={`/work/${item.slug}`}
+                                    className="text-white text-sm border border-white px-4 py-2 rounded-full"
+                                >
+
                                     View Project
-                                </p>
-                            </div>
-
-                        </motion.a>
-                    ))}
-
-                </div>
-            </div>
+                                </Link>
+                            </p>
+                        </div>
+                    </motion.div>
+                ))}
+            </motion.div>
         </div>
     );
-}
+};
+
+export default Work;
